@@ -18,7 +18,7 @@ export const Navbar: React.FC = () => {
       {/* Top Wellness Announcement Bar */}
       <div className="w-full bg-primary-container px-3 sm:px-space-md py-1.5 flex items-center justify-between text-on-primary text-label-sm font-label-sm overflow-hidden">
         <div className="flex items-center gap-2 truncate">
-          <span className="inline-block w-2 h-2 rounded-full bg-secondary-fixed animate-pulse shrink-0"></span>
+          <span className="inline-block w-2 h-2 rounded-full bg-secondary-fixed shrink-0"></span>
           <span className="truncate">MindBloom Sanctuary • Interactive tools for mindful respiration &amp; restorative health</span>
         </div>
         <div className="hidden sm:flex items-center gap-3 opacity-90 shrink-0">

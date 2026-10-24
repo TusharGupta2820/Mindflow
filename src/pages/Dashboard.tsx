@@ -76,7 +76,7 @@ export const Dashboard: React.FC = () => {
       <section className="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
         <div className="space-y-1.5 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-primary"></span>
             <span>MindBloom Sanctuary • Psychophysiological Wellness</span>
           </div>
           <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">
@@ -107,10 +107,6 @@ export const Dashboard: React.FC = () => {
               self_improvement
             </span>
             <span>Quick 2-Min Reset</span>
-            <span className="absolute -top-1 -right-1 flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-fixed"></span>
-            </span>
           </button>
         </div>
       </section>
@@ -716,7 +712,7 @@ export const Dashboard: React.FC = () => {
           title="Open AI Chatbot"
           type="button"
         >
-          {showFloatingChat ? <X size={18} /> : <Sparkles size={18} className="animate-pulse" />}
+          {showFloatingChat ? <X size={18} /> : <Sparkles size={18} />}
           <span className="font-label-md text-label-md font-semibold hidden sm:inline">
             {showFloatingChat ? 'Close Chat' : 'Ask AI Companion'}
           </span>

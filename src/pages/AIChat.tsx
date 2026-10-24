@@ -17,7 +17,7 @@ export const AIChat: React.FC = () => {
       {/* Header Banner */}
       <header className="space-y-1.5 max-w-2xl px-1">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/30 text-on-primary-container font-label-sm text-xs sm:text-sm">
-          <Sparkles size={14} className="text-primary animate-pulse shrink-0" />
+          <Sparkles size={14} className="text-primary shrink-0" />
           <span>Gemini 3.6 Flash Active</span>
         </div>
         <h1 className="text-2xl sm:text-3xl lg:text-headline-lg font-bold text-on-surface tracking-tight leading-tight">

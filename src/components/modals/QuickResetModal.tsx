@@ -95,7 +95,7 @@ export const QuickResetModal: React.FC<QuickResetModalProps> = ({ isOpen, onClos
       <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-surface-container-lowest p-5 sm:p-8 shadow-2xl flex flex-col items-center text-center space-y-6">
         <div className="w-full flex items-center justify-between pb-3 border-b border-surface-container-highest">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+            <span className="w-2.5 h-2.5 rounded-full bg-primary"></span>
             <span className="font-label-md text-label-md font-semibold text-primary">2-Minute Mindful Reset</span>
           </div>
           <button

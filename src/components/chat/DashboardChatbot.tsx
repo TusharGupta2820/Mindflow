@@ -157,7 +157,7 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({
       <div className="bg-gradient-to-r from-primary/10 via-primary-container/15 to-tertiary-fixed/20 px-3.5 sm:px-space-md py-3 sm:py-space-md border-b border-surface-container flex items-center justify-between gap-2">
         <div className="flex items-center gap-2.5 sm:gap-space-sm min-w-0">
           <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-primary text-on-primary flex items-center justify-center shadow-sm shrink-0">
-            <Sparkles size={18} className="animate-pulse" />
+            <Sparkles size={18} />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
@@ -169,7 +169,7 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({
               </span>
             </div>
             <p className="text-[11px] sm:text-body-sm text-on-surface-variant flex items-center gap-1.5 mt-0.5 truncate">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
               <span className="truncate">Active • Empathetic Sanctuary</span>
             </p>
           </div>
@@ -261,10 +261,8 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({
                   <Bot size={16} />
                 </div>
                 <div className="bg-surface-container-low border border-surface-container/60 rounded-2xl px-3.5 py-2.5 flex items-center gap-2 text-on-surface-variant text-xs sm:text-sm">
-                  <span className="w-2 h-2 rounded-full bg-primary animate-bounce"></span>
-                  <span className="w-2 h-2 rounded-full bg-primary animate-bounce [animation-delay:0.2s]"></span>
-                  <span className="w-2 h-2 rounded-full bg-primary animate-bounce [animation-delay:0.4s]"></span>
-                  <span className="font-medium text-primary ml-1">MindBloom AI is reflecting...</span>
+                  <span className="w-2 h-2 rounded-full bg-primary/70"></span>
+                  <span className="font-medium text-primary ml-0.5">MindBloom AI is reflecting...</span>
                 </div>
               </div>
             )}

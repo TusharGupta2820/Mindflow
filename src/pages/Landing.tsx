@@ -199,7 +199,7 @@ export const Landing: React.FC = () => {
             <div className="w-full bg-surface-container-lowest p-6 rounded-2xl shadow-md space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-surface-container-highest">
                 <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-primary-container animate-pulse"></span>
+                  <span className="w-3 h-3 rounded-full bg-primary-container"></span>
                   <span className="font-label-md text-label-md font-semibold text-on-surface">Active Session Sandbox</span>
                 </div>
                 <span className="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">

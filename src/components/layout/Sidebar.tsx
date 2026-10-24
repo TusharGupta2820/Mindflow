@@ -170,7 +170,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onCloseMobile }) => {
                 {profile?.full_name || user?.full_name || 'Aria Chen'}
               </span>
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-primary"></span>
                 <span className="font-label-sm text-label-sm text-on-surface-variant truncate">
                   Feeling Balanced
                 </span>

@@ -214,7 +214,7 @@ export const MoodScanner: React.FC = () => {
       {/* Header Banner */}
       <header className="space-y-1.5 max-w-2xl px-1">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/30 text-on-primary-container font-label-sm text-xs sm:text-sm">
-          <Sparkles size={14} className="text-primary animate-pulse shrink-0" />
+          <Sparkles size={14} className="text-primary shrink-0" />
           <span>Gemini 3.6 Flash Multimodal Vision</span>
         </div>
         <h1 className="text-2xl sm:text-3xl lg:text-headline-lg font-bold text-on-surface tracking-tight leading-tight">
@@ -294,7 +294,7 @@ export const MoodScanner: React.FC = () => {
                         <span className="text-[10px] sm:text-[11px] font-semibold text-white bg-black/50 px-2.5 py-0.5 rounded-full backdrop-blur-md">
                           Position face inside frame
                         </span>
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-primary/50 animate-pulse pointer-events-none"></div>
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-primary/40 pointer-events-none"></div>
                         <span className="text-[10px] sm:text-[11px] text-white/80 bg-black/50 px-2.5 py-0.5 rounded-full backdrop-blur-md">
                           Relax facial muscles
                         </span>
@@ -426,11 +426,11 @@ export const MoodScanner: React.FC = () => {
               {isAnalyzing && (
                 <div className="p-3.5 sm:p-4 rounded-2xl bg-primary-container/20 border border-primary/20 space-y-2 text-left">
                   <div className="flex items-center gap-2 text-primary font-semibold text-xs sm:text-sm">
-                    <span className="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                    <span className="w-2 h-2 rounded-full bg-primary"></span>
                     <span>Gemini 3.6 Flash is synthesizing affective cues...</span>
                   </div>
                   <div className="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-primary h-full animate-[pulse_1.5s_ease-in-out_infinite] w-3/4"></div>
+                    <div className="bg-primary h-full w-3/4 transition-all duration-500"></div>
                   </div>
                 </div>
               )}

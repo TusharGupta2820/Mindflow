@@ -81,7 +81,7 @@ export const DailyCheckIn: React.FC = () => {
       <section className="relative pt-space-xs pb-space-sm flex flex-col md:flex-row md:items-end justify-between gap-space-md">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm mb-space-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
             <span>MindBloom Emotional Pulse • Module 02</span>
           </div>
           <h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">

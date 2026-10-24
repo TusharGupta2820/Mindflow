@@ -235,7 +235,7 @@ export const GuidedBreathing: React.FC = () => {
             {/* Session Status Sub-bar */}
             <div className="w-full flex items-center justify-between z-10 text-on-surface-variant">
               <div className="flex items-center gap-2 font-label-md text-label-md">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-primary"></span>
                 <span className="font-semibold text-primary">{isPlaying ? 'In Rhythm' : 'Paused'}</span>
                 <span className="text-outline">/</span>
                 <span>{currentTech.title}</span>
@@ -431,7 +431,7 @@ export const GuidedBreathing: React.FC = () => {
                   Nervous State
                 </span>
                 <div className="flex items-center gap-1.5 mt-2">
-                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  <span className="w-2 h-2 rounded-full bg-primary"></span>
                   <span className="font-label-md text-label-md font-semibold text-on-surface">Vagal Tone</span>
                 </div>
               </div>
