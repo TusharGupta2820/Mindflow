@@ -117,3 +117,35 @@ export interface ProgressSummary {
   weeklyStabilityRate: number;
   stressAverage: number;
 }
+
+export interface AIMoodAnalysisResult {
+  detectedMood: MoodType;
+  moodTag: string;
+  valenceScore: number;
+  energyLevel: 'Low' | 'Moderate' | 'High';
+  expressionAnalysis: string;
+  activities: Array<{
+    title: string;
+    duration: string;
+    category: string;
+    description: string;
+  }>;
+  songs: Array<{
+    title: string;
+    artist: string;
+    genre: string;
+    moodVibe: string;
+  }>;
+  yogaPoses: Array<{
+    englishName: string;
+    sanskritName: string;
+    difficulty: string;
+    targetBenefit: string;
+    instructions: string[];
+  }>;
+  breathingTechnique: {
+    name: string;
+    pattern: string;
+    guidance: string;
+  };
+}

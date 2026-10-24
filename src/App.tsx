@@ -23,6 +23,7 @@ import { HelpResources } from './pages/HelpResources.tsx';
 import { Settings } from './pages/Settings.tsx';
 import { About } from './pages/About.tsx';
 import { Technology } from './pages/Technology.tsx';
+import { MoodScanner } from './pages/MoodScanner.tsx';
 import { Login } from './pages/Login.tsx';
 import { Register } from './pages/Register.tsx';
 import { ForgotPassword } from './pages/ForgotPassword.tsx';
@@ -45,6 +46,8 @@ export default function App() {
             <Route element={<DashboardLayout />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/check-in" element={<DailyCheckIn />} />
+              <Route path="/mood-scanner" element={<MoodScanner />} />
+              <Route path="/scan" element={<Navigate to="/mood-scanner" replace />} />
               <Route path="/mindfulness" element={<Mindfulness />} />
               <Route path="/breathing" element={<GuidedBreathing />} />
               <Route path="/relaxation" element={<Relaxation />} />

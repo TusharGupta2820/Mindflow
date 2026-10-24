@@ -13,6 +13,7 @@ import {
   WellnessGoal,
   Recommendation,
   ProgressSummary,
+  AIMoodAnalysisResult,
 } from '../types/index.ts';
 
 const API_BASE = (import.meta.env.VITE_API_BASE_URL ? (import.meta.env.VITE_API_BASE_URL as string).replace(/\/$/, '') : '') + '/api';
@@ -117,4 +118,17 @@ export const api = {
 
   // Account
   deleteAccount: () => request<{ success: boolean }>('/account', { method: 'DELETE' }),
+
+  // Gemini 3.6 Flash AI Features
+  aiChat: (message: string, history?: Array<{ role: 'user' | 'model'; content: string }>) =>
+    request<{ reply: string }>('/ai/chat', {
+      method: 'POST',
+      body: JSON.stringify({ message, history }),
+    }),
+
+  aiAnalyzeMood: (imageBase64: string) =>
+    request<AIMoodAnalysisResult>('/ai/analyze-mood', {
+      method: 'POST',
+      body: JSON.stringify({ image: imageBase64 }),
+    }),
 };

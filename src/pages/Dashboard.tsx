@@ -11,6 +11,8 @@ import { MoodType } from '../types/index.ts';
 import { QuickResetModal } from '../components/modals/QuickResetModal.tsx';
 import { CrisisModal } from '../components/modals/CrisisModal.tsx';
 import { MoodIcon } from '../components/ui/MoodIcon.tsx';
+import { DashboardChatbot } from '../components/chat/DashboardChatbot.tsx';
+import { Sparkles, MessageSquare, X } from 'lucide-react';
 
 export const Dashboard: React.FC = () => {
   const { profile, user } = useAuth();
@@ -25,6 +27,7 @@ export const Dashboard: React.FC = () => {
   const [logSuccess, setLogSuccess] = useState<boolean>(false);
   const [showQuickReset, setShowQuickReset] = useState<boolean>(false);
   const [showCrisisModal, setShowCrisisModal] = useState<boolean>(false);
+  const [showFloatingChat, setShowFloatingChat] = useState<boolean>(false);
 
   const availableTags = [
     'Stressed',
@@ -84,7 +87,17 @@ export const Dashboard: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-space-sm self-start lg:self-auto">
+        <div className="flex flex-wrap items-center gap-space-sm self-start lg:self-auto">
+          <Link
+            to="/mood-scanner"
+            className="inline-flex items-center gap-space-xs px-5 py-3 rounded-2xl bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg shadow-sm transition-all active:scale-[0.98] border border-surface-container"
+          >
+            <span className="material-symbols-outlined text-[20px] text-primary">
+              center_focus_strong
+            </span>
+            <span>AI Mood Scanner</span>
+          </Link>
+
           <button
             onClick={() => setShowQuickReset(true)}
             className="relative group inline-flex items-center gap-space-xs px-5 py-3 rounded-2xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary/90 transition-all active:scale-[0.98]"
@@ -448,7 +461,30 @@ export const Dashboard: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Progress & Consistency Row */}
+      {/* 5. MindBloom AI Companion Chatbot (Gemini 3.6 Flash) */}
+      <section className="relative z-10 space-y-space-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <span className="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">
+              AI Emotional Resonance
+            </span>
+            <h3 className="font-headline-sm text-headline-sm text-on-surface">
+              MindBloom AI Chatbot (Gemini 3.6 Flash)
+            </h3>
+          </div>
+          <Link
+            to="/mood-scanner"
+            className="inline-flex items-center gap-1.5 text-label-md font-label-md text-primary font-semibold hover:underline"
+          >
+            <span className="material-symbols-outlined text-[18px]">center_focus_strong</span>
+            <span>Analyze Face Mood with Live Camera</span>
+          </Link>
+        </div>
+
+        <DashboardChatbot />
+      </section>
+
+      {/* 6. Progress & Consistency Row */}
       <section className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
         {/* Left Column: Weekly Mood Trend Line Chart */}
         <div className="lg:col-span-7 bg-surface-container-lowest rounded-3xl p-space-lg shadow-[0_4px_24px_-2px_rgba(21,40,63,0.05)] flex flex-col justify-between">
@@ -671,6 +707,28 @@ export const Dashboard: React.FC = () => {
           </button>
         </div>
       </footer>
+
+      {/* Floating AI Chat Trigger on Bottom Right */}
+      <div className="fixed bottom-20 lg:bottom-8 right-5 z-40">
+        <button
+          onClick={() => setShowFloatingChat((prev) => !prev)}
+          className="flex items-center gap-2 px-4 py-3 rounded-full bg-primary text-on-primary shadow-2xl hover:bg-primary/95 hover:scale-105 active:scale-95 transition-all"
+          title="Open AI Chatbot"
+          type="button"
+        >
+          {showFloatingChat ? <X size={18} /> : <Sparkles size={18} className="animate-pulse" />}
+          <span className="font-label-md text-label-md font-semibold hidden sm:inline">
+            {showFloatingChat ? 'Close Chat' : 'Ask AI Companion'}
+          </span>
+        </button>
+      </div>
+
+      {/* Floating Chatbot Overlay */}
+      {showFloatingChat && (
+        <div className="fixed bottom-32 lg:bottom-24 right-5 z-50 w-[calc(100vw-2.5rem)] sm:w-[420px] shadow-2xl animate-fade-in">
+          <DashboardChatbot />
+        </div>
+      )}
 
       {/* Modals */}
       <QuickResetModal isOpen={showQuickReset} onClose={() => setShowQuickReset(false)} />
