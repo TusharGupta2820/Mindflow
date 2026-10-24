@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from './Sidebar.tsx';
 import { DashboardHeader } from './DashboardHeader.tsx';
+import { MobileBottomNav } from './MobileBottomNav.tsx';
 
 export const DashboardLayout: React.FC = () => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -36,10 +37,13 @@ export const DashboardLayout: React.FC = () => {
 
       {/* Main App Content */}
       <div className="pl-0 lg:pl-72 pt-16">
-        <main className="p-space-md lg:p-space-lg min-h-[calc(100vh-4rem)]">
+        <main className="p-3 sm:p-space-md lg:p-space-lg pb-24 lg:pb-space-lg min-h-[calc(100vh-4rem)]">
           <Outlet />
         </main>
       </div>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <MobileBottomNav />
     </div>
   );
 };

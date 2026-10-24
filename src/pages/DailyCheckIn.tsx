@@ -294,7 +294,7 @@ export const DailyCheckIn: React.FC = () => {
                 <span>Reset Selection</span>
               </button>
 
-              <div className="flex items-center gap-space-sm w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm w-full sm:w-auto">
                 <button
                   type="button"
                   onClick={handleSaveDraft}

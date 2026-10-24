@@ -22,41 +22,42 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onToggleSideba
 
   return (
     <>
-      <header className="fixed top-0 left-0 lg:left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(21,40,63,0.04)] z-40 px-space-md lg:px-space-lg flex items-center justify-between border-b border-surface-container/60">
-        <div className="flex items-center gap-space-md">
+      <header className="fixed top-0 left-0 lg:left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(21,40,63,0.04)] z-40 px-3 sm:px-space-md lg:px-space-lg flex items-center justify-between border-b border-surface-container/60">
+        <div className="flex items-center gap-2 sm:gap-space-md min-w-0">
           {/* Mobile hamburger toggle */}
           <button
             onClick={onToggleSidebar}
-            className="lg:hidden p-2 rounded-xl text-on-surface-variant hover:bg-surface-container"
+            className="lg:hidden p-2 rounded-xl text-on-surface-variant hover:bg-surface-container shrink-0"
             aria-label="Toggle menu"
           >
             <span className="material-symbols-outlined text-[24px]">menu</span>
           </button>
 
-          <div className="flex flex-col">
-            <span className="font-label-lg text-label-lg text-on-surface font-semibold leading-tight">
+          <div className="flex flex-col min-w-0">
+            <span className="font-label-lg text-label-lg text-on-surface font-semibold leading-tight truncate">
               Good morning, {firstName}
             </span>
-            <span className="font-label-sm text-label-sm text-on-surface-variant">
+            <span className="hidden sm:inline font-label-sm text-label-sm text-on-surface-variant truncate">
               Wednesday, Oct 24 • Daily Sanctuary
             </span>
           </div>
 
-          <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm shadow-xs">
+          <div className="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm shadow-xs shrink-0">
             <Flame className="w-4 h-4 text-amber-600 fill-amber-500" />
             <span className="font-semibold">5 Day Streak</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-space-sm sm:gap-space-md">
+        <div className="flex items-center gap-1.5 sm:gap-space-md shrink-0">
           {/* Immediate Support Crisis Action */}
           <button
             onClick={() => setShowCrisisModal(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-error-container text-on-error-container font-label-sm text-label-sm hover:opacity-95 transition-opacity active:scale-95 shadow-xs"
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl bg-error-container text-on-error-container font-label-sm text-label-sm hover:opacity-95 transition-opacity active:scale-95 shadow-xs"
             type="button"
           >
             <span className="material-symbols-outlined text-[16px] text-error">crisis_alert</span>
-            <span className="font-semibold text-error">Immediate Support</span>
+            <span className="hidden sm:inline font-semibold text-error">Immediate Support</span>
+            <span className="sm:hidden font-semibold text-error text-xs">Support</span>
           </button>
 
           {/* Notifications Popover Toggle */}

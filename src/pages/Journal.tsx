@@ -128,7 +128,7 @@ export const Journal: React.FC = () => {
 
         <button
           onClick={handleStartCreate}
-          className="px-6 py-3 rounded-2xl bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary transition-all flex items-center gap-2 self-start md:self-auto"
+          className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary transition-all flex items-center justify-center gap-2"
         >
           <span className="material-symbols-outlined text-[20px]">add</span>
           <span>New Journal Entry</span>

@@ -31,15 +31,26 @@ export const Sidebar: React.FC<SidebarProps> = ({ onCloseMobile }) => {
     <aside className="h-full w-72 bg-surface-container-low shadow-[0_1px_8px_rgba(21,40,63,0.04)] flex flex-col justify-between overflow-y-auto">
       <div className="p-space-lg">
         {/* Brand Header */}
-        <Link to="/" className="flex items-center gap-space-sm pb-space-lg group focus:outline-none">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-            <Logo size={32} />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-headline-sm text-headline-sm text-primary leading-tight font-semibold">MindBloom</span>
-            <span className="font-label-sm text-label-sm text-on-surface-variant">Interactive Wellness Suite</span>
-          </div>
-        </Link>
+        <div className="flex items-center justify-between pb-space-lg">
+          <Link to="/" onClick={handleNavClick} className="flex items-center gap-space-sm group focus:outline-none">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+              <Logo size={32} />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-headline-sm text-headline-sm text-primary leading-tight font-semibold">MindBloom</span>
+              <span className="font-label-sm text-label-sm text-on-surface-variant">Interactive Wellness Suite</span>
+            </div>
+          </Link>
+          {onCloseMobile && (
+            <button
+              onClick={onCloseMobile}
+              className="lg:hidden p-1.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors"
+              aria-label="Close menu"
+            >
+              <span className="material-symbols-outlined text-[20px]">close</span>
+            </button>
+          )}
+        </div>
 
         {/* Section 1: Daily Practice */}
         <div className="mt-space-xs">

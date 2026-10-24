@@ -138,10 +138,10 @@ export const Activities: React.FC = () => {
 
       {/* Tabs */}
       <div className="flex items-center justify-between flex-wrap gap-4">
-        <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-surface-container-high">
+        <div className="flex items-center gap-1.5 p-1.5 rounded-2xl bg-surface-container-high w-full sm:w-auto overflow-x-auto">
           <button
             onClick={() => setActiveTab('catalogue')}
-            className={`px-4 py-2 rounded-xl font-label-md text-label-md transition-all ${
+            className={`px-3 sm:px-4 py-2 rounded-xl font-label-md text-label-md transition-all whitespace-nowrap ${
               activeTab === 'catalogue'
                 ? 'bg-surface-container-lowest text-primary shadow-sm font-semibold'
                 : 'text-on-surface-variant hover:text-on-surface'
@@ -151,28 +151,28 @@ export const Activities: React.FC = () => {
           </button>
           <button
             onClick={() => setActiveTab('saved')}
-            className={`px-4 py-2 rounded-xl font-label-md text-label-md transition-all ${
+            className={`px-3 sm:px-4 py-2 rounded-xl font-label-md text-label-md transition-all whitespace-nowrap ${
               activeTab === 'saved'
                 ? 'bg-surface-container-lowest text-primary shadow-sm font-semibold'
                 : 'text-on-surface-variant hover:text-on-surface'
             }`}
           >
-            Saved Bookmarks ({savedActivities.length})
+            Saved ({savedActivities.length})
           </button>
           <button
             onClick={() => setActiveTab('history')}
-            className={`px-4 py-2 rounded-xl font-label-md text-label-md transition-all ${
+            className={`px-3 sm:px-4 py-2 rounded-xl font-label-md text-label-md transition-all whitespace-nowrap ${
               activeTab === 'history'
                 ? 'bg-surface-container-lowest text-primary shadow-sm font-semibold'
                 : 'text-on-surface-variant hover:text-on-surface'
             }`}
           >
-            Completed History ({activityLogs.length})
+            History ({activityLogs.length})
           </button>
         </div>
 
         {activeTab === 'catalogue' && (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex items-center gap-1.5 overflow-x-auto py-1 w-full sm:w-auto">
             {categories.map((c) => (
               <button
                 key={c}

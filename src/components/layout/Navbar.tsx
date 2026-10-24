@@ -16,12 +16,12 @@ export const Navbar: React.FC = () => {
   return (
     <header className="w-full bg-surface-container-low/90 backdrop-blur-md sticky top-0 z-50 border-b border-surface-container transition-all">
       {/* Top Wellness Announcement Bar */}
-      <div className="w-full bg-primary-container px-space-md py-1.5 flex items-center justify-between text-on-primary text-label-sm font-label-sm">
-        <div className="flex items-center gap-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
-          <span>MindBloom Sanctuary • Interactive tools for mindful respiration, emotional clarity &amp; restorative health</span>
+      <div className="w-full bg-primary-container px-3 sm:px-space-md py-1.5 flex items-center justify-between text-on-primary text-label-sm font-label-sm overflow-hidden">
+        <div className="flex items-center gap-2 truncate">
+          <span className="inline-block w-2 h-2 rounded-full bg-secondary-fixed animate-pulse shrink-0"></span>
+          <span className="truncate">MindBloom Sanctuary • Interactive tools for mindful respiration &amp; restorative health</span>
         </div>
-        <div className="hidden sm:flex items-center gap-3 opacity-90">
+        <div className="hidden sm:flex items-center gap-3 opacity-90 shrink-0">
           <span>Private &amp; Secure</span>
           <span>•</span>
           <span className="tracking-wider uppercase font-semibold">Client-Side Sovereignty</span>

@@ -92,7 +92,7 @@ export const QuickResetModal: React.FC<QuickResetModalProps> = ({ isOpen, onClos
 
   return (
     <div className="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="w-full max-w-lg rounded-3xl bg-surface-container-lowest p-6 md:p-8 shadow-2xl flex flex-col items-center text-center space-y-6">
+      <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-surface-container-lowest p-5 sm:p-8 shadow-2xl flex flex-col items-center text-center space-y-6">
         <div className="w-full flex items-center justify-between pb-3 border-b border-surface-container-highest">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>

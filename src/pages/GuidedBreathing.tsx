@@ -302,36 +302,38 @@ export const GuidedBreathing: React.FC = () => {
 
           {/* Controls & Accessibility Panel */}
           <div className="rounded-2xl bg-surface-container-lowest p-6 shadow-sm flex flex-col gap-6">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                {/* Reset Button */}
-                <button
-                  onClick={handleRestart}
-                  className="p-3 rounded-2xl bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors"
-                  title="Restart Session"
-                  type="button"
-                >
-                  <span className="material-symbols-outlined text-[24px]">replay</span>
-                </button>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  {/* Reset Button */}
+                  <button
+                    onClick={handleRestart}
+                    className="p-3.5 rounded-2xl bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors shrink-0"
+                    title="Restart Session"
+                    type="button"
+                  >
+                    <span className="material-symbols-outlined text-[24px]">replay</span>
+                  </button>
 
-                {/* Primary Play / Pause Toggle Button */}
-                <button
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="flex items-center gap-3 px-8 py-3.5 rounded-2xl bg-primary-container text-on-primary shadow-md hover:bg-primary transition-all active:scale-95"
-                  type="button"
-                >
-                  <span className="material-symbols-outlined text-[26px]">
-                    {isPlaying ? 'pause' : 'play_arrow'}
-                  </span>
-                  <span className="font-label-lg text-label-lg font-semibold">
-                    {isPlaying ? 'Pause Practice' : 'Resume Practice'}
-                  </span>
-                </button>
+                  {/* Primary Play / Pause Toggle Button */}
+                  <button
+                    onClick={() => setIsPlaying(!isPlaying)}
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 rounded-2xl bg-primary-container text-on-primary shadow-md hover:bg-primary transition-all active:scale-95"
+                    type="button"
+                  >
+                    <span className="material-symbols-outlined text-[24px]">
+                      {isPlaying ? 'pause' : 'play_arrow'}
+                    </span>
+                    <span className="font-label-lg text-label-lg font-semibold">
+                      {isPlaying ? 'Pause Practice' : 'Resume Practice'}
+                    </span>
+                  </button>
+                </div>
 
                 {/* Finish Early Button */}
                 <button
                   onClick={() => setShowCompletion(true)}
-                  className="px-5 py-3 rounded-2xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors"
+                  className="w-full sm:w-auto px-5 py-3 rounded-2xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors text-center"
                   type="button"
                 >
                   Finish Early

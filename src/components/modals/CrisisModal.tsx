@@ -15,7 +15,7 @@ export const CrisisModal: React.FC<CrisisModalProps> = ({ isOpen, onClose }) => 
 
   return (
     <div className="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="w-full max-w-xl rounded-3xl bg-surface-container-lowest p-6 md:p-8 shadow-2xl space-y-6">
+      <div className="w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl bg-surface-container-lowest p-5 sm:p-8 shadow-2xl space-y-5">
         <div className="flex items-start justify-between pb-4 border-b border-surface-container-highest">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-2xl bg-error-container text-error flex items-center justify-center">

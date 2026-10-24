@@ -104,17 +104,17 @@ export const Landing: React.FC = () => {
             </p>
 
             {/* CTA Cluster */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full sm:w-auto">
               <Link
                 to="/dashboard"
-                className="px-6 py-3.5 bg-primary-container text-on-primary font-label-lg text-label-lg rounded-xl shadow-md hover:bg-primary transition-all flex items-center gap-2"
+                className="px-6 py-3.5 bg-primary-container text-on-primary font-label-lg text-label-lg rounded-xl shadow-md hover:bg-primary transition-all flex items-center justify-center gap-2"
               >
                 <span>Start Your Wellness Journey</span>
                 <span className="material-symbols-outlined text-[20px]">spa</span>
               </Link>
               <a
                 href="#tools"
-                className="px-6 py-3.5 bg-surface-container-lowest text-primary font-label-lg text-label-lg rounded-xl shadow-sm hover:bg-surface-container-high transition-all"
+                className="px-6 py-3.5 bg-surface-container-lowest text-primary font-label-lg text-label-lg rounded-xl shadow-sm hover:bg-surface-container-high transition-all text-center"
               >
                 Explore Wellness Tools
               </a>

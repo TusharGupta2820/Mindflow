@@ -156,7 +156,7 @@ export const Progress: React.FC = () => {
 
       {/* Chart 1: Weekly Mood Horizon Line Chart */}
       <div className="bg-surface-container-lowest p-6 md:p-8 rounded-3xl shadow-sm border border-surface-container space-y-6">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <span className="font-label-sm text-label-sm uppercase tracking-wider text-outline font-semibold">
               Valence Trajectory
