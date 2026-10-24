@@ -1,0 +1,6 @@
+{
+  "name": "MindBloom - Interactive Therapy & Mental Wellness Suite",
+  "description": "A supportive digital wellness platform for mood tracking, guided breathing exercises, private journaling, and personalized wellness routines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

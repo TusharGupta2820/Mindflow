@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00646f;
+  --color-primary-container: #087f8c;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #effdff;
+  --color-primary-fixed: #95f1ff;
+  --color-primary-fixed-dim: #79d4e2;
+  --color-on-primary-fixed: #001f24;
+  --color-on-primary-fixed-variant: #004f57;
+
+  --color-secondary: #4d5f79;
+  --color-secondary-container: #cee1ff;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #52647e;
+  --color-secondary-fixed: #d3e4ff;
+  --color-secondary-fixed-dim: #b5c8e5;
+  --color-on-secondary-fixed: #081c33;
+  --color-on-secondary-fixed-variant: #364860;
+
+  --color-tertiary: #4d5e58;
+  --color-tertiary-container: #657770;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #ebfef6;
+  --color-tertiary-fixed: #d4e7df;
+  --color-tertiary-fixed-dim: #b8cbc3;
+  --color-on-tertiary-fixed: #0e1f1a;
+  --color-on-tertiary-fixed-variant: #394a45;
+
+  --color-surface: #fbf9f3;
+  --color-surface-dim: #dcdad4;
+  --color-surface-bright: #fbf9f3;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f5f3ee;
+  --color-surface-container: #f0eee8;
+  --color-surface-container-high: #eae8e2;
+  --color-surface-container-highest: #e4e2dd;
+  --color-surface-variant: #e4e2dd;
+  --color-on-surface: #1b1c19;
+  --color-on-surface-variant: #3e494a;
+  --color-inverse-surface: #30312d;
+  --color-inverse-on-surface: #f2f1eb;
+  --color-outline: #6e797b;
+  --color-outline-variant: #bdc9ca;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+}
+
+/* Custom Spacing & Typography classes used in Stitch designs */
+.font-display-lg { font-family: 'Manrope', sans-serif; font-size: 48px; line-height: 56px; letter-spacing: -0.02em; font-weight: 700; }
+.font-headline-lg { font-family: 'Manrope', sans-serif; font-size: 32px; line-height: 40px; letter-spacing: -0.01em; font-weight: 600; }
+.font-headline-md { font-family: 'Manrope', sans-serif; font-size: 24px; line-height: 32px; font-weight: 600; }
+.font-headline-sm { font-family: 'Manrope', sans-serif; font-size: 20px; line-height: 28px; font-weight: 600; }
+.font-body-lg { font-family: 'Inter', sans-serif; font-size: 18px; line-height: 28px; font-weight: 400; }
+.font-body-md { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 24px; font-weight: 400; }
+.font-body-sm { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 20px; font-weight: 400; }
+.font-label-lg { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 20px; font-weight: 600; }
+.font-label-md { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 18px; font-weight: 500; }
+.font-label-sm { font-family: 'Inter', sans-serif; font-size: 11px; line-height: 16px; letter-spacing: 0.04em; font-weight: 600; }
+
+.text-display-lg { font-size: 48px; line-height: 56px; }
+.text-headline-lg { font-size: 32px; line-height: 40px; }
+.text-headline-md { font-size: 24px; line-height: 32px; }
+.text-headline-sm { font-size: 20px; line-height: 28px; }
+.text-body-lg { font-size: 18px; line-height: 28px; }
+.text-body-md { font-size: 16px; line-height: 24px; }
+.text-body-sm { font-size: 14px; line-height: 20px; }
+.text-label-lg { font-size: 15px; line-height: 20px; }
+.text-label-md { font-size: 13px; line-height: 18px; }
+.text-label-sm { font-size: 11px; line-height: 16px; }
+
+/* Stitch Spacing aliases */
+.p-space-xs { padding: 0.5rem; }
+.p-space-sm { padding: 0.75rem; }
+.p-space-md { padding: 1rem; }
+.p-space-lg { padding: 1.5rem; }
+.p-space-xl { padding: 2.5rem; }
+
+.px-space-xs { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-space-sm { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-space-md { padding-left: 1rem; padding-right: 1rem; }
+.px-space-lg { padding-left: 1.5rem; padding-right: 1.5rem; }
+.px-space-xl { padding-left: 2.5rem; padding-right: 2.5rem; }
+
+.py-space-xs { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-space-sm { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-space-md { padding-top: 1rem; padding-bottom: 1rem; }
+.py-space-lg { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py-space-xl { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+
+.pb-space-xs { padding-bottom: 0.5rem; }
+.pb-space-sm { padding-bottom: 0.75rem; }
+.pb-space-md { padding-bottom: 1rem; }
+.pb-space-lg { padding-bottom: 1.5rem; }
+.pb-space-xl { padding-bottom: 2.5rem; }
+
+.pt-space-xs { padding-top: 0.5rem; }
+.pt-space-sm { padding-top: 0.75rem; }
+.pt-space-md { padding-top: 1rem; }
+.pt-space-lg { padding-top: 1.5rem; }
+.pt-space-xl { padding-top: 2.5rem; }
+
+.mb-space-xs { margin-bottom: 0.5rem; }
+.mb-space-sm { margin-bottom: 0.75rem; }
+.mb-space-md { margin-bottom: 1rem; }
+.mb-space-lg { margin-bottom: 1.5rem; }
+.mb-space-xl { margin-bottom: 2.5rem; }
+
+.mt-space-xs { margin-top: 0.5rem; }
+.mt-space-sm { margin-top: 0.75rem; }
+.mt-space-md { margin-top: 1rem; }
+.mt-space-lg { margin-top: 1.5rem; }
+.mt-space-xl { margin-top: 2.5rem; }
+
+.gap-space-xs { gap: 0.5rem; }
+.gap-space-sm { gap: 0.75rem; }
+.gap-space-md { gap: 1rem; }
+.gap-space-lg { gap: 1.5rem; }
+.gap-space-xl { gap: 2.5rem; }
+
+.m-space-sm { margin: 0.75rem; }
