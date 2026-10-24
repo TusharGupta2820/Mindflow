@@ -15,7 +15,7 @@ import {
   ProgressSummary,
 } from '../types/index.ts';
 
-const API_BASE = '/api';
+const API_BASE = (import.meta.env.VITE_API_BASE_URL ? (import.meta.env.VITE_API_BASE_URL as string).replace(/\/$/, '') : '') + '/api';
 
 function getAuthHeader(): Record<string, string> {
   const token = localStorage.getItem('mindbloom_token') || 'demo-token';
