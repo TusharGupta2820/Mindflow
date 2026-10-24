@@ -207,7 +207,7 @@ export const Mindfulness: React.FC = () => {
                         key={i}
                         className="px-2.5 py-0.5 rounded-full bg-surface-container-low text-primary font-label-sm text-[11px]"
                       >
-                        ✓ {b}
+                        {b}
                       </span>
                     ))}
                   </div>

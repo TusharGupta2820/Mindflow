@@ -302,11 +302,11 @@ export const Journal: React.FC = () => {
                       onChange={(e) => setFormMood(e.target.value)}
                       className="w-full p-3 rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary"
                     >
-                      <option value="Very Low">🌧️ Very Low</option>
-                      <option value="Low">⛅ Low</option>
-                      <option value="Neutral">🌤️ Neutral</option>
-                      <option value="Good">🌿 Good</option>
-                      <option value="Great">✨ Great</option>
+                      <option value="Very Low">Very Low (Depleted)</option>
+                      <option value="Low">Low (Heavy)</option>
+                      <option value="Neutral">Neutral (Balanced)</option>
+                      <option value="Good">Good (Steady)</option>
+                      <option value="Great">Great (Vibrant)</option>
                     </select>
                   </div>
 

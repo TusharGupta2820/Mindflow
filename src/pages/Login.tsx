@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.tsx';
+import { Logo } from '../components/ui/Logo.tsx';
 
 export const Login: React.FC = () => {
   const { login } = useAuth();
@@ -45,11 +46,7 @@ export const Login: React.FC = () => {
     <div className="min-h-screen bg-surface flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center space-y-3">
         <Link to="/" className="inline-flex items-center gap-2 group">
-          <img
-            src="https://lh3.googleusercontent.com/aida/AEtjO1X48tiGT6qTsmHWCEzekx2iw-q6tzPvDMd-NBht49EOjm1DrzHcDe43QIXylQhqfPk_ae-F681RQDcwmN67ZdddHwPgswctATnnXixKJxtulZV-IUpQr-mcfSHq8Gj726L9iqJew39A_6lZZFhKcVO-bkwIwnak5fGVt4dQkf91ewv4TNQG0f9zsuJhlNkt3jx07eLJ6h5Qod_tSq8uSqRMsFBXLuROvmL-g7CpDT-Wskwux5IOjTH2AZM"
-            alt="MindBloom Logo"
-            className="w-10 h-10 object-contain group-hover:scale-105 transition-transform"
-          />
+          <Logo size={40} className="w-10 h-10 group-hover:scale-105 transition-transform" />
           <span className="font-headline-md text-headline-md text-on-surface font-semibold">MindBloom</span>
         </Link>
         <h2 className="font-headline-lg text-headline-lg text-on-surface tracking-tight">

@@ -100,7 +100,7 @@ export const Activities: React.FC = () => {
               </div>
               <div>
                 <span className="font-label-md text-label-md text-on-surface font-semibold block">Midday Mindful Pause</span>
-                <span className="font-body-sm text-body-sm text-tertiary font-medium">Completed at 11:15 AM ✓</span>
+                <span className="font-body-sm text-body-sm text-tertiary font-medium">Completed at 11:15 AM</span>
               </div>
             </div>
             <span className="font-label-sm text-label-sm font-semibold text-primary px-3 py-1 rounded-full bg-surface-container-lowest shadow-xs">

@@ -5,14 +5,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Leaf, Search, Heart, Target, Zap, Clock, TrendingUp } from 'lucide-react';
 import { Navbar } from '../components/layout/Navbar.tsx';
 import { CrisisModal } from '../components/modals/CrisisModal.tsx';
+import { Logo } from '../components/ui/Logo.tsx';
+import { MoodIcon } from '../components/ui/MoodIcon.tsx';
 
 export const Landing: React.FC = () => {
   const navigate = useNavigate();
   const [selectedMood, setSelectedMood] = useState<{ key: string; title: string; feedback: string }>({
     key: 'good',
-    title: '🌱 Good',
+    title: 'Good',
     feedback: 'You are grounded and growing. A gentle journal reflection can seal in this equilibrium.',
   });
 
@@ -49,25 +52,25 @@ export const Landing: React.FC = () => {
   const moodsList = [
     {
       key: 'sad',
-      icon: '💧',
+      mood: 'Very Low',
       label: 'Sad',
       feedback: 'It takes strength to acknowledge feeling down. Let us ground your thoughts with gentle breathwork.',
     },
     {
       key: 'low',
-      icon: '☁️',
+      mood: 'Low',
       label: 'Low',
       feedback: 'Feeling heavy or depleted is normal. Take off any pressure to perform right now.',
     },
     {
       key: 'good',
-      icon: '🌱',
+      mood: 'Good',
       label: 'Good',
       feedback: 'You are grounded and growing. A gentle journal reflection can seal in this equilibrium.',
     },
     {
       key: 'happy',
-      icon: '☀️',
+      mood: 'Great',
       label: 'Happy',
       feedback: 'Embrace this radiant energy! Channel it into gratitude to carry you forward.',
     },
@@ -157,14 +160,16 @@ export const Landing: React.FC = () => {
                   return (
                     <button
                       key={m.key}
-                      onClick={() => setSelectedMood({ key: m.key, title: `${m.icon} ${m.label}`, feedback: m.feedback })}
+                      onClick={() => setSelectedMood({ key: m.key, title: m.label, feedback: m.feedback })}
                       className={`mood-btn flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all text-center group ${
                         isSelected
                           ? 'ring-2 ring-primary-container bg-tertiary-fixed shadow-sm'
                           : 'bg-surface-container hover:bg-secondary-container/40'
                       }`}
                     >
-                      <span className="text-2xl sm:text-3xl mb-1 group-hover:scale-110 transition-transform">{m.icon}</span>
+                      <div className="mb-1 group-hover:scale-110 transition-transform flex items-center justify-center h-8">
+                        <MoodIcon mood={m.mood} size={26} />
+                      </div>
                       <span className="font-label-md text-label-md text-on-surface">{m.label}</span>
                     </button>
                   );
@@ -278,8 +283,8 @@ export const Landing: React.FC = () => {
             {/* Pillar 1: Mindfulness */}
             <div className="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
               <div className="space-y-3">
-                <div className="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-primary-container">
-                  <span className="text-2xl">🌿</span>
+                <div className="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center">
+                  <Leaf className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Mindfulness</h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant">
@@ -295,8 +300,8 @@ export const Landing: React.FC = () => {
             {/* Pillar 2: Self-Awareness */}
             <div className="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
               <div className="space-y-3">
-                <div className="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-secondary">
-                  <span className="text-2xl">🔍</span>
+                <div className="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center">
+                  <Search className="w-6 h-6 text-secondary" />
                 </div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Self-Awareness</h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant">
@@ -312,8 +317,8 @@ export const Landing: React.FC = () => {
             {/* Pillar 3: Emotional Well-Being */}
             <div className="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
               <div className="space-y-3">
-                <div className="w-12 h-12 rounded-xl bg-error-container flex items-center justify-center text-error">
-                  <span className="text-2xl">💖</span>
+                <div className="w-12 h-12 rounded-xl bg-error-container flex items-center justify-center">
+                  <Heart className="w-6 h-6 text-error" />
                 </div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Emotional Well-Being</h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant">
@@ -329,8 +334,8 @@ export const Landing: React.FC = () => {
             {/* Pillar 4: Healthy Habits */}
             <div className="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-4">
               <div className="space-y-3">
-                <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary-container">
-                  <span className="text-2xl">🎯</span>
+                <div className="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center">
+                  <Target className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-headline-sm text-headline-sm text-on-surface">Healthy Habits</h3>
                 <p className="font-body-sm text-body-sm text-on-surface-variant">
@@ -649,8 +654,9 @@ export const Landing: React.FC = () => {
               <p className="font-body-sm text-body-sm text-on-surface-variant">
                 Take under 30 seconds to log current emotional valence, primary energy state, and contextual tags without overthinking.
               </p>
-              <div className="p-3 bg-surface-container-low rounded-xl text-label-sm font-label-sm text-on-surface-variant">
-                ⚡ Quick 30-sec prompt
+              <div className="p-3 bg-surface-container-low rounded-xl text-label-sm font-label-sm text-on-surface-variant flex items-center gap-2">
+                <Zap className="w-4 h-4 text-amber-500 shrink-0" />
+                <span>Quick 30-sec prompt</span>
               </div>
             </div>
 
@@ -662,8 +668,9 @@ export const Landing: React.FC = () => {
               <p className="font-body-sm text-body-sm text-on-surface-variant">
                 Receive personalized non-intrusive activity suggestions based on your state: breathwork, audio grounding, or freeform writing.
               </p>
-              <div className="p-3 bg-surface-container-low rounded-xl text-label-sm font-label-sm text-on-surface-variant">
-                🎯 Tailored recommendations
+              <div className="p-3 bg-surface-container-low rounded-xl text-label-sm font-label-sm text-on-surface-variant flex items-center gap-2">
+                <Target className="w-4 h-4 text-primary shrink-0" />
+                <span>Tailored recommendations</span>
               </div>
             </div>
 
@@ -675,8 +682,9 @@ export const Landing: React.FC = () => {
               <p className="font-body-sm text-body-sm text-on-surface-variant">
                 Engage with interactive feedback cues designed for rapid somatic stabilization and cognitive recentering.
               </p>
-              <div className="p-3 bg-surface-container-low rounded-xl text-label-sm font-label-sm text-on-surface-variant">
-                🌿 2 to 5 minutes total
+              <div className="p-3 bg-surface-container-low rounded-xl text-label-sm font-label-sm text-on-surface-variant flex items-center gap-2">
+                <Clock className="w-4 h-4 text-teal-600 shrink-0" />
+                <span>2 to 5 minutes total</span>
               </div>
             </div>
 
@@ -688,8 +696,9 @@ export const Landing: React.FC = () => {
               <p className="font-body-sm text-body-sm text-on-surface-variant">
                 Review your longitudinal emotional rhythm. Spot wellness triggers and recovery velocity without guilt metrics.
               </p>
-              <div className="p-3 bg-surface-container-low rounded-xl text-label-sm font-label-sm text-on-surface-variant">
-                📈 Private personal trend lines
+              <div className="p-3 bg-surface-container-low rounded-xl text-label-sm font-label-sm text-on-surface-variant flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Private personal trend lines</span>
               </div>
             </div>
           </div>
@@ -743,12 +752,8 @@ export const Landing: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1 shadow-sm">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida/AEtjO1X48tiGT6qTsmHWCEzekx2iw-q6tzPvDMd-NBht49EOjm1DrzHcDe43QIXylQhqfPk_ae-F681RQDcwmN67ZdddHwPgswctATnnXixKJxtulZV-IUpQr-mcfSHq8Gj726L9iqJew39A_6lZZFhKcVO-bkwIwnak5fGVt4dQkf91ewv4TNQG0f9zsuJhlNkt3jx07eLJ6h5Qod_tSq8uSqRMsFBXLuROvmL-g7CpDT-Wskwux5IOjTH2AZM"
-                    alt="MindBloom Logo"
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm">
+                  <Logo size={36} />
                 </div>
                 <span className="font-headline-sm text-headline-sm text-on-surface">MindBloom</span>
               </div>

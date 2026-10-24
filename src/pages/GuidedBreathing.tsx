@@ -472,16 +472,22 @@ export const GuidedBreathing: React.FC = () => {
               </p>
             </div>
 
-            {/* Atmospheric Photo Card */}
-            <div className="relative rounded-2xl overflow-hidden h-36">
-              <img
-                className="w-full h-full object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLKfaaKp3jJO5uQnJl00E8UM7P3XrfwoS1oEgvF1otDwivm3PGx7rJ0BiAKPBpseir_GAf1lZvadfYUettwW4KYkz4rBOFGIg5NXMGxIx_MO0GB4wTxLhpVtRePP38OMZmyLweIQyzFATHqR_kRXX2H2k3-a4hhBzN8jVOqLKrvm5dMyrZe2denYP661WgP78zYvnJOI18K14WuhND1FBt4PV3TV4KDPgQwtXiJhSnOWWbqimTq7Bt"
-                alt="MindBloom Sensory Studio"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-on-surface/60 via-transparent to-transparent flex items-end p-3">
-                <span className="font-label-sm text-label-sm text-on-primary font-medium">
+            {/* Atmospheric Visual Card */}
+            <div className="relative rounded-2xl overflow-hidden h-36 bg-gradient-to-br from-primary-container/30 via-tertiary-fixed/30 to-secondary-container/30 p-4 flex flex-col justify-between border border-surface-container">
+              <div className="flex items-center justify-between">
+                <span className="w-8 h-8 rounded-lg bg-surface/80 backdrop-blur-sm flex items-center justify-center text-primary">
+                  <span className="material-symbols-outlined text-[18px]">air</span>
+                </span>
+                <span className="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-surface/80 backdrop-blur-sm text-primary font-semibold">
+                  Acoustic Pacing
+                </span>
+              </div>
+              <div>
+                <span className="font-label-md text-label-md text-on-surface font-semibold block">
                   MindBloom Sensory Studio
+                </span>
+                <span className="font-body-sm text-body-sm text-on-surface-variant">
+                  Coherent vagal resonance cycles
                 </span>
               </div>
             </div>

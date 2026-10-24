@@ -6,6 +6,7 @@
 import React from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.tsx';
+import { Logo } from '../ui/Logo.tsx';
 
 interface SidebarProps {
   onCloseMobile?: () => void;
@@ -31,11 +32,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ onCloseMobile }) => {
       <div className="p-space-lg">
         {/* Brand Header */}
         <Link to="/" className="flex items-center gap-space-sm pb-space-lg group focus:outline-none">
-          <img
-            src="https://lh3.googleusercontent.com/aida/AEtjO1X48tiGT6qTsmHWCEzekx2iw-q6tzPvDMd-NBht49EOjm1DrzHcDe43QIXylQhqfPk_ae-F681RQDcwmN67ZdddHwPgswctATnnXixKJxtulZV-IUpQr-mcfSHq8Gj726L9iqJew39A_6lZZFhKcVO-bkwIwnak5fGVt4dQkf91ewv4TNQG0f9zsuJhlNkt3jx07eLJ6h5Qod_tSq8uSqRMsFBXLuROvmL-g7CpDT-Wskwux5IOjTH2AZM"
-            alt="MindBloom Logo"
-            className="h-8 w-auto object-contain group-hover:scale-105 transition-transform"
-          />
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <Logo size={32} />
+          </div>
           <div className="flex flex-col">
             <span className="font-headline-sm text-headline-sm text-primary leading-tight font-semibold">MindBloom</span>
             <span className="font-label-sm text-label-sm text-on-surface-variant">Interactive Wellness Suite</span>
@@ -126,14 +125,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ onCloseMobile }) => {
       <div className="p-space-md m-space-sm rounded-xl bg-surface-container">
         <div className="flex items-center justify-between">
           <Link to="/settings" className="flex items-center gap-space-sm min-w-0 group">
-            <img
-              src={
-                user?.avatar_url ||
-                'https://lh3.googleusercontent.com/aida-public/AB6AXuDHNwEr1bHhY0Bs0yyHJo0yVbkbnvj9nqOR9LCGfVBYktar69xfcFpaV9hovYmv1qzo_ao3WFWr8hM28GMsKsnfYpt8Wce28oApaXTfSI1IMfyTtB1-TSIxHk29_U1F6EF9C-oxRuFf0MguKUM6lS4DV5k2rQbFPUvoZUCaQMJQ5zgRcIMA6jmOipJuNaOd0kkuidfhL5OuMhSraVVHhL0b94a21swtiU1LaaQuQ15AQDg7oDfQ7cH4'
-              }
-              alt="Profile"
-              className="w-8 h-8 rounded-full object-cover shrink-0"
-            />
+            {user?.avatar_url ? (
+              <img
+                src={user.avatar_url}
+                alt="Profile"
+                className="w-8 h-8 rounded-full object-cover shrink-0"
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-primary/15 text-primary font-bold flex items-center justify-center shrink-0 text-sm">
+                {(profile?.full_name || user?.full_name || 'A')[0]}
+              </div>
+            )}
             <div className="flex flex-col min-w-0">
               <span className="font-label-lg text-label-lg text-on-surface truncate group-hover:text-primary transition-colors">
                 {profile?.full_name || user?.full_name || 'Aria Chen'}

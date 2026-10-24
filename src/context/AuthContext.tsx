@@ -24,8 +24,6 @@ const defaultUser: User = {
   id: '00000000-0000-0000-0000-000000000001',
   email: 'aria.chen@mindbloom.app',
   full_name: 'Aria Chen',
-  avatar_url:
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuDHNwEr1bHhY0Bs0yyHJo0yVbkbnvj9nqOR9LCGfVBYktar69xfcFpaV9hovYmv1qzo_ao3WFWr8hM28GMsKsnfYpt8Wce28oApaXTfSI1IMfyTtB1-TSIxHk29_U1F6EF9C-oxRuFf0MguKUM6lS4DV5k2rQbFPUvoZUCaQMJQ5zgRcIMA6jmOipJuNaOd0kkuidfhL5OuMhSraVVHhL0b94a21swtiU1LaaQuQ15AQDg7oDfQ7cH4',
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useWellness } from '../context/WellnessContext.tsx';
 import { MoodType } from '../types/index.ts';
+import { MoodIcon } from '../components/ui/MoodIcon.tsx';
 
 export const DailyCheckIn: React.FC = () => {
   const { moods, todayMood, logMood } = useWellness();
@@ -132,11 +133,11 @@ export const DailyCheckIn: React.FC = () => {
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-space-xs">
                 {(
                   [
-                    { mood: 'Very Low', icon: '🌧️', sub: 'Depleted' },
-                    { mood: 'Low', icon: '⛅', sub: 'Heavy' },
-                    { mood: 'Neutral', icon: '🌤️', sub: 'Balanced' },
-                    { mood: 'Good', icon: '🌿', sub: 'Steady' },
-                    { mood: 'Great', icon: '✨', sub: 'Vibrant' },
+                    { mood: 'Very Low', sub: 'Depleted' },
+                    { mood: 'Low', sub: 'Heavy' },
+                    { mood: 'Neutral', sub: 'Balanced' },
+                    { mood: 'Good', sub: 'Steady' },
+                    { mood: 'Great', sub: 'Vibrant' },
                   ] as const
                 ).map((item) => {
                   const isActive = selectedMood === item.mood;
@@ -151,9 +152,9 @@ export const DailyCheckIn: React.FC = () => {
                           : 'bg-surface-container-low hover:bg-surface-container text-on-surface'
                       }`}
                     >
-                      <span className="text-3xl mb-1.5 transform group-hover:scale-110 transition-transform">
-                        {item.icon}
-                      </span>
+                      <div className="h-9 mb-1.5 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                        <MoodIcon mood={item.mood} size={28} />
+                      </div>
                       <span className="font-label-lg text-label-lg font-semibold">{item.mood}</span>
                       <span className="font-label-sm text-label-sm text-on-surface-variant mt-0.5">
                         {item.sub}
@@ -299,7 +300,7 @@ export const DailyCheckIn: React.FC = () => {
                   onClick={handleSaveDraft}
                   className="w-full sm:w-auto px-5 py-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors"
                 >
-                  {draftSaved ? 'Draft Saved ✓' : 'Save Draft'}
+                  {draftSaved ? 'Draft Saved' : 'Save Draft'}
                 </button>
                 <button
                   type="submit"
@@ -444,17 +445,7 @@ export const DailyCheckIn: React.FC = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="text-xl">
-                        {m.mood === 'Great'
-                          ? '✨'
-                          : m.mood === 'Good'
-                          ? '🌿'
-                          : m.mood === 'Neutral'
-                          ? '🌤️'
-                          : m.mood === 'Low'
-                          ? '⛅'
-                          : '🌧️'}
-                      </span>
+                      <MoodIcon mood={m.mood} size={20} />
                       <div>
                         <span className="font-label-lg text-label-lg text-on-surface block leading-tight font-semibold">
                           {m.entry_date === '2024-10-24'

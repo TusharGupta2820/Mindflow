@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.tsx';
+import { Logo } from '../ui/Logo.tsx';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,12 +32,8 @@ export const Navbar: React.FC = () => {
       <nav className="max-w-7xl mx-auto px-space-md lg:px-space-lg py-3 flex items-center justify-between">
         {/* Brand Logo + Identity */}
         <Link to="/" className="flex items-center gap-3 group focus:outline-none">
-          <div className="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center p-1.5 shadow-sm group-hover:scale-105 transition-transform">
-            <img
-              src="https://lh3.googleusercontent.com/aida/AEtjO1X48tiGT6qTsmHWCEzekx2iw-q6tzPvDMd-NBht49EOjm1DrzHcDe43QIXylQhqfPk_ae-F681RQDcwmN67ZdddHwPgswctATnnXixKJxtulZV-IUpQr-mcfSHq8Gj726L9iqJew39A_6lZZFhKcVO-bkwIwnak5fGVt4dQkf91ewv4TNQG0f9zsuJhlNkt3jx07eLJ6h5Qod_tSq8uSqRMsFBXLuROvmL-g7CpDT-Wskwux5IOjTH2AZM"
-              alt="MindBloom Logo"
-              className="w-full h-full object-contain"
-            />
+          <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+            <Logo size={40} />
           </div>
           <div className="flex flex-col">
             <span className="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-tight">MindBloom</span>

@@ -6,6 +6,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useWellness } from '../context/WellnessContext.tsx';
+import { MoodIcon } from '../components/ui/MoodIcon.tsx';
 
 export const Recommendations: React.FC = () => {
   const { recommendations, todayMood } = useWellness();
@@ -28,17 +29,7 @@ export const Recommendations: React.FC = () => {
       {/* State context chip */}
       <div className="p-4 rounded-2xl bg-surface-container-lowest shadow-xs border border-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="text-2xl">
-            {todayMood?.mood === 'Great'
-              ? '✨'
-              : todayMood?.mood === 'Good'
-              ? '🌿'
-              : todayMood?.mood === 'Neutral'
-              ? '🌤️'
-              : todayMood?.mood === 'Low'
-              ? '⛅'
-              : '🌧️'}
-          </span>
+          <MoodIcon mood={todayMood?.mood || 'Good'} size={24} />
           <div>
             <span className="font-label-sm text-label-sm text-primary font-semibold block uppercase">
               Current Registered Baseline

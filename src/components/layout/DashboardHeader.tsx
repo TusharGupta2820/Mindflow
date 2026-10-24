@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Flame } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.tsx';
 import { CrisisModal } from '../modals/CrisisModal.tsx';
 
@@ -42,7 +43,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onToggleSideba
           </div>
 
           <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm shadow-xs">
-            <span>🔥</span>
+            <Flame className="w-4 h-4 text-amber-600 fill-amber-500" />
             <span className="font-semibold">5 Day Streak</span>
           </div>
         </div>
@@ -102,14 +103,17 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ onToggleSideba
 
           {/* Profile Quick Link */}
           <Link to="/settings" className="flex items-center gap-space-xs group">
-            <img
-              src={
-                user?.avatar_url ||
-                'https://lh3.googleusercontent.com/aida-public/AB6AXuDHNwEr1bHhY0Bs0yyHJo0yVbkbnvj9nqOR9LCGfVBYktar69xfcFpaV9hovYmv1qzo_ao3WFWr8hM28GMsKsnfYpt8Wce28oApaXTfSI1IMfyTtB1-TSIxHk29_U1F6EF9C-oxRuFf0MguKUM6lS4DV5k2rQbFPUvoZUCaQMJQ5zgRcIMA6jmOipJuNaOd0kkuidfhL5OuMhSraVVHhL0b94a21swtiU1LaaQuQ15AQDg7oDfQ7cH4'
-              }
-              alt="Profile"
-              className="w-8 h-8 rounded-full object-cover group-hover:ring-2 group-hover:ring-primary/40 transition-all"
-            />
+            {user?.avatar_url ? (
+              <img
+                src={user.avatar_url}
+                alt="Profile"
+                className="w-8 h-8 rounded-full object-cover group-hover:ring-2 group-hover:ring-primary/40 transition-all"
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-primary/15 text-primary font-bold flex items-center justify-center shrink-0 text-sm group-hover:ring-2 group-hover:ring-primary/40 transition-all">
+                {firstName[0] || 'A'}
+              </div>
+            )}
             <span className="hidden lg:inline font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors font-medium">
               {firstName}
             </span>

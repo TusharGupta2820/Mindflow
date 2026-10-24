@@ -10,6 +10,7 @@ import { useWellness } from '../context/WellnessContext.tsx';
 import { MoodType } from '../types/index.ts';
 import { QuickResetModal } from '../components/modals/QuickResetModal.tsx';
 import { CrisisModal } from '../components/modals/CrisisModal.tsx';
+import { MoodIcon } from '../components/ui/MoodIcon.tsx';
 
 export const Dashboard: React.FC = () => {
   const { profile, user } = useAuth();
@@ -123,11 +124,11 @@ export const Dashboard: React.FC = () => {
           <div className="grid grid-cols-5 gap-space-xs sm:gap-space-sm mb-space-lg">
             {(
               [
-                { mood: 'Very Low', icon: '🌧️', sub: 'Heavy' },
-                { mood: 'Low', icon: '⛅', sub: 'Subdued' },
-                { mood: 'Neutral', icon: '🌤️', sub: 'Balanced' },
-                { mood: 'Good', icon: '🌿', sub: 'Grounded' },
-                { mood: 'Great', icon: '✨', sub: 'Energized' },
+                { mood: 'Very Low', sub: 'Heavy' },
+                { mood: 'Low', sub: 'Subdued' },
+                { mood: 'Neutral', sub: 'Balanced' },
+                { mood: 'Good', sub: 'Grounded' },
+                { mood: 'Great', sub: 'Energized' },
               ] as const
             ).map((item) => {
               const isActive = selectedMood === item.mood;
@@ -142,9 +143,9 @@ export const Dashboard: React.FC = () => {
                   }`}
                   type="button"
                 >
-                  <span className="text-2xl sm:text-3xl mb-1 transform group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </span>
+                  <div className="h-8 mb-1 flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                    <MoodIcon mood={item.mood} size={24} />
+                  </div>
                   <span className="font-label-md text-label-md font-semibold">{item.mood}</span>
                   <span className="font-label-sm text-label-sm opacity-80 hidden sm:inline">{item.sub}</span>
                 </button>
@@ -317,15 +318,17 @@ export const Dashboard: React.FC = () => {
             className="group bg-surface-container-lowest rounded-3xl p-space-md flex flex-col justify-between shadow-[0_4px_20px_-2px_rgba(21,40,63,0.05)] hover:-translate-y-1 transition-all"
           >
             <div className="space-y-space-sm">
-              <div className="w-full h-36 rounded-2xl overflow-hidden relative">
-                <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9CGNkDXn6aQ4SCgL3NV4m33FcAB80ekPihYtfDLHH_sxfIL5JkqItewlkQZqiGGvmA7QAX8njBcbteiYWt5dLZYBHgIhDrgJBVI9huN3UlEXwAb2XZtXDqYUD4DEYINYQrpSUATjAnTucnKXFn6iyrkS9MsUUA6BIT-VJ9wzTjFGInxlWhjvQrvaqHWKh01zhY79YKqMP89hjIjfs6NF3NX1ezhAPNYp8E1nRSDjNDPiakTVoh9Rr"
-                  alt="Guided Breathing Studio"
-                />
-                <div className="absolute top-2.5 left-2.5 bg-surface/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-primary flex items-center gap-1 font-semibold">
-                  <span className="material-symbols-outlined text-[14px]">air</span>
-                  <span>1-5 min</span>
+              <div className="w-full h-36 rounded-2xl bg-primary-container/15 p-space-sm flex flex-col justify-between relative overflow-hidden group-hover:bg-primary-container/20 transition-colors">
+                <div className="flex items-center justify-between">
+                  <div className="bg-surface/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-primary flex items-center gap-1 font-semibold">
+                    <span className="material-symbols-outlined text-[14px]">air</span>
+                    <span>1-5 min</span>
+                  </div>
+                  <span className="material-symbols-outlined text-primary text-[22px]">air</span>
+                </div>
+                <div className="space-y-1">
+                  <span className="font-label-sm text-label-sm text-primary font-semibold uppercase tracking-wider">Parasympathetic Pace</span>
+                  <p className="font-body-sm text-body-sm text-on-surface font-medium">Box Breathing &amp; 4-7-8 Rhythm</p>
                 </div>
               </div>
               <div>
@@ -349,15 +352,17 @@ export const Dashboard: React.FC = () => {
             className="group bg-surface-container-lowest rounded-3xl p-space-md flex flex-col justify-between shadow-[0_4px_20px_-2px_rgba(21,40,63,0.05)] hover:-translate-y-1 transition-all"
           >
             <div className="space-y-space-sm">
-              <div className="w-full h-36 rounded-2xl overflow-hidden relative">
-                <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFfhgwUazHvvG_2HxDoLJ1oM4ZcfSd6o039auiscYbZcOgaBY2Ga7JJ_paNBMegClUw7MPYxVOw5UngWUf5-zU7LXBg-GJtOXDdQglUuqmU57XqNF1AIz9OToXIl29OtGXMYzdtkuWzM4USgTk1C9FBrk8dJGge5JH-aX8ZmsFAHWvymETdyCL6Xu7pma1utaugjEwXAe8THcFL4Pe4gEas7mFIt1mzodAPtRanB4xG_SuDVa7uvMd"
-                  alt="Mindfulness & Stillness"
-                />
-                <div className="absolute top-2.5 left-2.5 bg-surface/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-secondary flex items-center gap-1 font-semibold">
-                  <span className="material-symbols-outlined text-[14px]">self_improvement</span>
-                  <span>5-12 min</span>
+              <div className="w-full h-36 rounded-2xl bg-secondary-container/20 p-space-sm flex flex-col justify-between relative overflow-hidden group-hover:bg-secondary-container/30 transition-colors">
+                <div className="flex items-center justify-between">
+                  <div className="bg-surface/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-secondary flex items-center gap-1 font-semibold">
+                    <span className="material-symbols-outlined text-[14px]">self_improvement</span>
+                    <span>5-12 min</span>
+                  </div>
+                  <span className="material-symbols-outlined text-secondary text-[22px]">self_improvement</span>
+                </div>
+                <div className="space-y-1">
+                  <span className="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Present Awareness</span>
+                  <p className="font-body-sm text-body-sm text-on-surface font-medium">Mindful Audio &amp; Sensory Grounding</p>
                 </div>
               </div>
               <div>
@@ -413,15 +418,17 @@ export const Dashboard: React.FC = () => {
             className="group bg-surface-container-lowest rounded-3xl p-space-md flex flex-col justify-between shadow-[0_4px_20px_-2px_rgba(21,40,63,0.05)] hover:-translate-y-1 transition-all"
           >
             <div className="space-y-space-sm">
-              <div className="w-full h-36 rounded-2xl overflow-hidden relative">
-                <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQMhhYwKzpsX-Gfg13gQFpUgxfHVPib9Bh_yoDRYmxaMxQAn2_mtcL8XMxmcb__xmXbehZwSpFGmDHIMps8S3aZwII0sK5cyuI49JwWNTMulWyFE38X8EspcwABmbFL_0NfO5-kefl8k81dj2vUB8dvm77hCSs8iAI0OF5HIFsuURW7cWj0d1ztv45OuIPD-qpn3pRDaGZiNTn-Ql4xCN3I3xXgGgzsL9SO_gW4wFwP6vqfKWmyIOf"
-                  alt="Relaxation Zen Stones"
-                />
-                <div className="absolute top-2.5 left-2.5 bg-surface/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-tertiary flex items-center gap-1 font-semibold">
-                  <span className="material-symbols-outlined text-[14px]">spa</span>
-                  <span>8 min</span>
+              <div className="w-full h-36 rounded-2xl bg-tertiary-fixed/40 p-space-sm flex flex-col justify-between relative overflow-hidden group-hover:bg-tertiary-fixed/60 transition-colors">
+                <div className="flex items-center justify-between">
+                  <div className="bg-surface/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-tertiary flex items-center gap-1 font-semibold">
+                    <span className="material-symbols-outlined text-[14px]">spa</span>
+                    <span>8 min</span>
+                  </div>
+                  <span className="material-symbols-outlined text-tertiary text-[22px]">spa</span>
+                </div>
+                <div className="space-y-1">
+                  <span className="font-label-sm text-label-sm text-tertiary font-semibold uppercase tracking-wider">Somatic Release</span>
+                  <p className="font-body-sm text-body-sm text-on-surface font-medium">Progressive Muscle Relaxation (PMR)</p>
                 </div>
               </div>
               <div>
@@ -566,7 +573,7 @@ export const Dashboard: React.FC = () => {
                   </div>
                   <div>
                     <span className="font-label-md text-label-md text-on-surface font-semibold block">Midday Mindful Pause</span>
-                    <span className="font-body-sm text-body-sm text-tertiary font-medium">Completed at 11:15 AM ✓</span>
+                    <span className="font-body-sm text-body-sm text-tertiary font-medium">Completed at 11:15 AM</span>
                   </div>
                 </div>
                 <span className="font-label-sm text-label-sm font-semibold text-primary px-2.5 py-1 rounded-full bg-surface-container-lowest">
