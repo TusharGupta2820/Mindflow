@@ -709,10 +709,10 @@ export const Dashboard: React.FC = () => {
       </footer>
 
       {/* Floating AI Chat Trigger on Bottom Right */}
-      <div className="fixed bottom-20 lg:bottom-8 right-5 z-40">
+      <div className="fixed bottom-20 lg:bottom-8 right-4 sm:right-6 z-40">
         <button
           onClick={() => setShowFloatingChat((prev) => !prev)}
-          className="flex items-center gap-2 px-4 py-3 rounded-full bg-primary text-on-primary shadow-2xl hover:bg-primary/95 hover:scale-105 active:scale-95 transition-all"
+          className="flex items-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-full bg-primary text-on-primary shadow-2xl hover:bg-primary/95 hover:scale-105 active:scale-95 transition-all backdrop-blur-md"
           title="Open AI Chatbot"
           type="button"
         >
@@ -720,14 +720,25 @@ export const Dashboard: React.FC = () => {
           <span className="font-label-md text-label-md font-semibold hidden sm:inline">
             {showFloatingChat ? 'Close Chat' : 'Ask AI Companion'}
           </span>
+          <span className="sm:hidden text-xs font-semibold">
+            {showFloatingChat ? 'Close' : 'AI Chat'}
+          </span>
         </button>
       </div>
 
-      {/* Floating Chatbot Overlay */}
+      {/* Floating Chatbot Overlay / Bottom Sheet on Mobile */}
       {showFloatingChat && (
-        <div className="fixed bottom-32 lg:bottom-24 right-5 z-50 w-[calc(100vw-2.5rem)] sm:w-[420px] shadow-2xl animate-fade-in">
-          <DashboardChatbot />
-        </div>
+        <>
+          {/* Backdrop on mobile */}
+          <div
+            onClick={() => setShowFloatingChat(false)}
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 sm:hidden animate-fade-in"
+            aria-hidden="true"
+          />
+          <div className="fixed inset-x-2 bottom-20 sm:bottom-24 sm:right-6 sm:inset-x-auto sm:w-[430px] z-50 shadow-2xl animate-fade-in">
+            <DashboardChatbot isModal={true} onClose={() => setShowFloatingChat(false)} />
+          </div>
+        </>
       )}
 
       {/* Modals */}

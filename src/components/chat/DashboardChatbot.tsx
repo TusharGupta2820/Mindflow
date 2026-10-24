@@ -14,6 +14,7 @@ import {
   Maximize2,
   HeartHandshake,
   ShieldAlert,
+  X,
 } from 'lucide-react';
 import { api } from '../../services/api.ts';
 import { useAuth } from '../../context/AuthContext.tsx';
@@ -27,6 +28,8 @@ interface Message {
 
 interface DashboardChatbotProps {
   className?: string;
+  onClose?: () => void;
+  isModal?: boolean;
 }
 
 const QUICK_PROMPTS = [
@@ -36,7 +39,11 @@ const QUICK_PROMPTS = [
   'How can I prepare my mind for deep sleep tonight?',
 ];
 
-export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = '' }) => {
+export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({
+  className = '',
+  onClose,
+  isModal = false,
+}) => {
   const { profile, user } = useAuth();
   const userName = (profile?.full_name || user?.full_name || 'Friend').split(' ')[0];
 
@@ -81,7 +88,6 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = 
     setIsLoading(true);
 
     try {
-      // Build conversation history for context
       const history = messages.slice(-6).map((m) => ({
         role: m.role,
         content: m.content,
@@ -132,73 +138,99 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = 
 
   return (
     <div
-      className={`bg-surface-container-lowest rounded-3xl border border-surface-container shadow-[0_4px_24px_-2px_rgba(21,40,63,0.06)] overflow-hidden transition-all duration-300 flex flex-col ${
-        isMinimized ? 'h-auto' : 'h-[620px]'
+      className={`bg-surface-container-lowest rounded-3xl border border-surface-container shadow-[0_8px_32px_rgba(21,40,63,0.12)] overflow-hidden transition-all duration-300 flex flex-col ${
+        isModal
+          ? 'h-[85vh] sm:h-[620px] max-h-[85vh]'
+          : isMinimized
+          ? 'h-auto'
+          : 'h-[540px] sm:h-[620px]'
       } ${className}`}
     >
+      {/* Mobile Drawer Top Drag Pill (only in modal on small screens) */}
+      {isModal && (
+        <div className="pt-2 pb-0.5 flex justify-center sm:hidden bg-gradient-to-r from-primary/10 via-primary-container/15 to-tertiary-fixed/20">
+          <div className="w-10 h-1 rounded-full bg-on-surface-variant/30"></div>
+        </div>
+      )}
+
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary/10 via-primary-container/15 to-tertiary-fixed/20 p-space-md border-b border-surface-container flex items-center justify-between">
-        <div className="flex items-center gap-space-sm">
-          <div className="w-10 h-10 rounded-2xl bg-primary text-on-primary flex items-center justify-center shadow-sm shrink-0">
-            <Sparkles size={20} className="animate-pulse" />
+      <div className="bg-gradient-to-r from-primary/10 via-primary-container/15 to-tertiary-fixed/20 px-3.5 sm:px-space-md py-3 sm:py-space-md border-b border-surface-container flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2.5 sm:gap-space-sm min-w-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-primary text-on-primary flex items-center justify-center shadow-sm shrink-0">
+            <Sparkles size={18} className="animate-pulse" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h3 className="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <h3 className="font-headline-sm text-sm sm:text-headline-sm text-on-surface font-semibold leading-tight truncate">
                 MindBloom AI Companion
               </h3>
-              <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-[11px] font-bold uppercase tracking-wider">
+              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-primary/15 text-primary text-[10px] sm:text-[11px] font-bold uppercase tracking-wider shrink-0">
                 Gemini 3.6 Flash
               </span>
             </div>
-            <p className="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 mt-0.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Mindful emotional resonance • 24/7 compassionate space</span>
+            <p className="text-[11px] sm:text-body-sm text-on-surface-variant flex items-center gap-1.5 mt-0.5 truncate">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+              <span className="truncate">Active • Empathetic Sanctuary</span>
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
           <button
             onClick={handleClearHistory}
-            className="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl transition-colors"
+            className="p-1.5 sm:p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl transition-colors"
             title="Reset conversation"
             type="button"
           >
             <RotateCcw size={16} />
           </button>
-          <button
-            onClick={() => setIsMinimized((prev) => !prev)}
-            className="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl transition-colors"
-            title={isMinimized ? 'Expand Chatbot' : 'Minimize Chatbot'}
-            type="button"
-          >
-            {isMinimized ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
-          </button>
+
+          {!isModal && (
+            <button
+              onClick={() => setIsMinimized((prev) => !prev)}
+              className="p-1.5 sm:p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl transition-colors"
+              title={isMinimized ? 'Expand Chatbot' : 'Minimize Chatbot'}
+              type="button"
+            >
+              {isMinimized ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
+            </button>
+          )}
+
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-1.5 sm:p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-xl transition-colors"
+              title="Close Chat"
+              type="button"
+              aria-label="Close"
+            >
+              <X size={18} />
+            </button>
+          )}
         </div>
       </div>
 
       {!isMinimized && (
         <>
           {/* Messages Scroll Area */}
-          <div className="flex-1 overflow-y-auto p-space-md lg:p-space-lg space-y-space-md bg-surface-container-lowest/50">
+          <div className="flex-1 overflow-y-auto p-3 sm:p-space-md lg:p-space-lg space-y-3 sm:space-y-space-md bg-surface-container-lowest/50">
             {messages.map((message) => {
               const isAi = message.role === 'model';
               return (
                 <div
                   key={message.id}
-                  className={`flex items-start gap-space-sm ${
+                  className={`flex items-start gap-2 sm:gap-space-sm ${
                     isAi ? 'justify-start' : 'justify-end'
                   }`}
                 >
                   {isAi && (
-                    <div className="w-8 h-8 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                      <Bot size={18} />
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                      <Bot size={16} />
                     </div>
                   )}
 
                   <div
-                    className={`max-w-[85%] sm:max-w-[75%] rounded-2xl px-space-md py-3 text-body-md ${
+                    className={`max-w-[88%] sm:max-w-[78%] rounded-2xl px-3.5 sm:px-space-md py-2.5 sm:py-3 text-[13.5px] sm:text-body-md ${
                       isAi
                         ? 'bg-surface-container-low text-on-surface shadow-sm border border-surface-container/60'
                         : 'bg-primary text-on-primary shadow-sm rounded-tr-sm'
@@ -206,7 +238,7 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = 
                   >
                     <div className="whitespace-pre-wrap leading-relaxed">{message.content}</div>
                     <div
-                      className={`text-[11px] mt-1.5 flex items-center justify-end ${
+                      className={`text-[10px] sm:text-[11px] mt-1 flex items-center justify-end ${
                         isAi ? 'text-on-surface-variant' : 'text-on-primary/75'
                       }`}
                     >
@@ -215,8 +247,8 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = 
                   </div>
 
                   {!isAi && (
-                    <div className="w-8 h-8 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                      <UserIcon size={18} />
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                      <UserIcon size={16} />
                     </div>
                   )}
                 </div>
@@ -224,17 +256,15 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = 
             })}
 
             {isLoading && (
-              <div className="flex items-start gap-space-sm justify-start">
-                <div className="w-8 h-8 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                  <Bot size={18} />
+              <div className="flex items-start gap-2 sm:gap-space-sm justify-start">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                  <Bot size={16} />
                 </div>
-                <div className="bg-surface-container-low border border-surface-container/60 rounded-2xl px-4 py-3 flex items-center gap-2 text-on-surface-variant">
+                <div className="bg-surface-container-low border border-surface-container/60 rounded-2xl px-3.5 py-2.5 flex items-center gap-2 text-on-surface-variant text-xs sm:text-sm">
                   <span className="w-2 h-2 rounded-full bg-primary animate-bounce"></span>
                   <span className="w-2 h-2 rounded-full bg-primary animate-bounce [animation-delay:0.2s]"></span>
                   <span className="w-2 h-2 rounded-full bg-primary animate-bounce [animation-delay:0.4s]"></span>
-                  <span className="font-label-sm text-label-sm ml-1 text-primary font-medium">
-                    MindBloom AI is reflecting...
-                  </span>
+                  <span className="font-medium text-primary ml-1">MindBloom AI is reflecting...</span>
                 </div>
               </div>
             )}
@@ -242,19 +272,19 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = 
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick Prompts Bar */}
-          <div className="px-space-md pt-2 pb-1 bg-surface-container-low/50 border-t border-surface-container/50 overflow-x-auto">
-            <div className="flex items-center gap-2 pb-1">
-              <span className="text-[11px] font-semibold text-outline uppercase tracking-wider shrink-0 flex items-center gap-1">
-                <HeartHandshake size={13} className="text-primary" />
-                Prompt ideas:
+          {/* Quick Prompts Bar (Horizontal Smooth Scroll) */}
+          <div className="px-3 sm:px-space-md py-2 bg-surface-container-low/60 border-t border-surface-container/50 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+              <span className="text-[10px] sm:text-[11px] font-semibold text-outline uppercase tracking-wider shrink-0 flex items-center gap-1">
+                <HeartHandshake size={12} className="text-primary" />
+                <span>Ideas:</span>
               </span>
               {QUICK_PROMPTS.map((prompt, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleSendMessage(prompt)}
                   disabled={isLoading}
-                  className="shrink-0 text-left px-3 py-1 rounded-full text-label-sm text-on-surface-variant bg-surface-container hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 disabled:opacity-50"
+                  className="shrink-0 text-left px-2.5 sm:px-3 py-1 rounded-full text-xs text-on-surface-variant bg-surface-container hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95 disabled:opacity-50"
                   type="button"
                 >
                   {prompt}
@@ -264,7 +294,12 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = 
           </div>
 
           {/* Input Area */}
-          <div className="p-space-md bg-surface-container-lowest border-t border-surface-container">
+          <div
+            className="p-3 sm:p-space-md bg-surface-container-lowest border-t border-surface-container"
+            style={{
+              paddingBottom: isModal ? 'max(0.75rem, env(safe-area-inset-bottom))' : undefined,
+            }}
+          >
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -278,30 +313,30 @@ export const DashboardChatbot: React.FC<DashboardChatbotProps> = ({ className = 
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Share what is on your mind or ask for mindfulness guidance..."
+                  placeholder="Share what is on your mind..."
                   rows={2}
                   disabled={isLoading}
-                  className="w-full resize-none rounded-2xl bg-surface-container-low border border-surface-container focus:border-primary focus:bg-surface-container-lowest px-4 py-2.5 text-body-md text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none transition-all"
+                  className="w-full resize-none rounded-2xl bg-surface-container-low border border-surface-container focus:border-primary focus:bg-surface-container-lowest px-3.5 sm:px-4 py-2 sm:py-2.5 text-[15px] sm:text-body-md text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none transition-all leading-snug"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="h-11 w-11 rounded-2xl bg-primary text-on-primary hover:bg-primary/90 disabled:opacity-40 disabled:hover:bg-primary flex items-center justify-center transition-all shrink-0 active:scale-95 shadow-sm"
+                className="h-10 w-10 sm:h-11 sm:w-11 rounded-2xl bg-primary text-on-primary hover:bg-primary/90 disabled:opacity-40 disabled:hover:bg-primary flex items-center justify-center transition-all shrink-0 active:scale-95 shadow-sm"
                 title="Send message"
               >
-                <Send size={18} />
+                <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
               </button>
             </form>
 
-            <div className="flex items-center justify-between mt-2 text-[11px] text-on-surface-variant">
-              <span className="flex items-center gap-1 text-outline">
-                <ShieldAlert size={12} />
-                Gemini 3.6 Flash • AI companion for mindfulness support, not clinical diagnosis.
+            <div className="flex items-center justify-between mt-1.5 text-[10px] sm:text-[11px] text-on-surface-variant">
+              <span className="flex items-center gap-1 text-outline truncate">
+                <ShieldAlert size={11} className="shrink-0" />
+                <span className="truncate">Gemini 3.6 Flash • AI companion for mindfulness</span>
               </span>
-              <span className="hidden sm:inline text-outline">
-                Press Enter to send, Shift+Enter for newline
+              <span className="hidden sm:inline text-outline shrink-0 ml-2">
+                Enter to send, Shift+Enter for newline
               </span>
             </div>
           </div>

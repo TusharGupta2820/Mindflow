@@ -75,6 +75,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ onCloseMobile }) => {
                 </span>
               </div>
             </NavLink>
+            <NavLink to="/chat" onClick={handleNavClick} className={navItemClass}>
+              <span className="material-symbols-outlined text-[20px]">smart_toy</span>
+              <div className="flex items-center justify-between flex-1">
+                <span>AI Chatbot</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-primary/15 text-primary font-bold uppercase">
+                  AI
+                </span>
+              </div>
+            </NavLink>
             <NavLink to="/mindfulness" onClick={handleNavClick} className={navItemClass}>
               <span className="material-symbols-outlined text-[20px]">self_improvement</span>
               <span>Mindfulness &amp; Meditation</span>
